@@ -1,0 +1,17 @@
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819150848-13c235a23b6f h1:kcFNlrF2KDDOVl3XA/AGHqrFQlzp8DxWPwXK2mLU+R0=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819150848-13c235a23b6f/go.mod h1:+VtrnBbZFRGVvVOpngK8O1h1J7FeEE3PH8wkvqW2pV4=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819152259-7b9d35480a5f h1:z7O5LE/8yrQqZ06NvDPrSORCGwtRoDZ7SfS0fT1JYZw=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819152259-7b9d35480a5f/go.mod h1:+VtrnBbZFRGVvVOpngK8O1h1J7FeEE3PH8wkvqW2pV4=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819152641-59fe0f718a4d h1:iJ+P7VJdYgDSBIWw4ZkZEs9sQMCNrWQxwEPQVnjFdP8=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210819152641-59fe0f718a4d/go.mod h1:+VtrnBbZFRGVvVOpngK8O1h1J7FeEE3PH8wkvqW2pV4=
+github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/goombaio/namegenerator v0.0.0-20181006234301-989e774b106e h1:XmA6L9IPRdUr28a+SK/oMchGgQy159wvzXA5tJ7l+40=
+github.com/goombaio/namegenerator v0.0.0-20181006234301-989e774b106e/go.mod h1:AFIo+02s+12CEg8Gzz9kzhCbmbq6JcKNrhHffCGA9z4=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/sirupsen/logrus v1.8.1 h1:dJKuHgqk1NNQlqoA6BTlM1Wf9DOH3NBjQyu0h9+AZZE=
+github.com/sirupsen/logrus v1.8.1/go.mod h1:yWOB1SBYBC5VeMP7gHvWumXLIWorT60ONWic61uBYv0=
+github.com/streadway/amqp v1.0.0 h1:kuuDrUJFZL1QYL9hUNuCxNObNzB0bV/ZG5jV3RWAQgo=
+github.com/streadway/amqp v1.0.0/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
+github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
+golang.org/x/sys v0.0.0-20191026070338-33540a1f6037 h1:YyJpGZS1sBuBCzLAR1VEpK193GlqGZbnPFnPV/5Rsb4=
+golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
