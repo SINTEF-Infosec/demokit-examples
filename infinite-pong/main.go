@@ -39,13 +39,13 @@ func (pn *PongNode) Configure() {
 	pn.SetEntryPoint(sendPingAction)
 }
 
-func (pn *PongNode) SendPing() {
+func (pn *PongNode) SendPing(_ *core.Event) {
 	time.Sleep(time.Second)
 	pn.Logger.Info("Sending ping...")
 	pn.BroadcastEvent("PING", "")
 }
 
-func (pn *PongNode) SendPong() {
+func (pn *PongNode) SendPong(_ *core.Event) {
 	time.Sleep(time.Second)
 	pn.Logger.Info("Sending pong...")
 	pn.BroadcastEvent("PONG", "")
