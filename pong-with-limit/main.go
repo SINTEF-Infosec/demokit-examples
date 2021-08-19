@@ -47,6 +47,9 @@ func (pn *PongNode) Configure() {
 
 	// Adding an entry point
 	pn.SetEntryPoint(sendPingAction)
+
+	// Serving the state
+	pn.ServeState(&pn.State)
 }
 
 func (pn *PongNode) CanSend() bool {
