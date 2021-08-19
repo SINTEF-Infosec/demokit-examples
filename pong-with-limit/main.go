@@ -56,14 +56,14 @@ func (pn *PongNode) CanSend() bool {
 	return pn.State.Limit > 0
 }
 
-func (pn *PongNode) SendPing() {
+func (pn *PongNode) SendPing(_ *core.Event) {
 	time.Sleep(time.Second)
 	pn.Logger.Info("Sending ping...")
 	pn.BroadcastEvent("PING", "")
 	pn.State.Limit--
 }
 
-func (pn *PongNode) SendPong() {
+func (pn *PongNode) SendPong(_ *core.Event) {
 	time.Sleep(time.Second)
 	pn.Logger.Info("Sending pong...")
 	pn.BroadcastEvent("PONG", "")
