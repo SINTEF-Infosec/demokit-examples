@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   pong-node-1:
-    container_name: pong_node_1
+    container_name: greeter_1
     build:
       context: .
     environment:
@@ -16,7 +16,7 @@ services:
       - demokit
 
   pong-node-2:
-    container_name: pong_node_2
+    container_name: greeter_2
     build:
       context: .
     environment:
