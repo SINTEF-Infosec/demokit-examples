@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  node1:
+    container_name: token_node_1
+    build:
+      context: .
+    environment:
+      - NODE_NAME=token-node-1
+      - NODE_ID=0
+      - NODE_NB=3
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9001:8081
+    networks:
+      - demokit
+
+  node2:
+    container_name: token_node_2
+    build:
+      context: .
+    environment:
+      - NODE_NAME=token-node-2
+      - NODE_ID=1
+      - NODE_NB=3
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9002:8081
+    networks:
+      - demokit
+
+  node3:
+    container_name: token_node_3
+    build:
+      context: .
+    environment:
+      - NODE_NAME=token-node-3
+      - NODE_ID=2
+      - NODE_NB=3
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9003:8081
+    networks:
+      - demokit
+
+
+networks:
+  demokit:
+    name: demokit
