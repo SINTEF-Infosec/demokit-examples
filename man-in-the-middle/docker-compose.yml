@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  discussion-1:
+    container_name: alice
+    build:
+      context: legit-node
+    environment:
+      - NODE_NAME=Alice
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9001:8081
+    networks:
+      - demokit
+
+  discussion-2:
+    container_name: bob
+    build:
+      context: legit-node
+    environment:
+      - NODE_NAME=Bob
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9002:8081
+    networks:
+      - demokit
+
+  malicious:
+    container_name: charlie
+    build:
+      context: malicious-node
+    environment:
+      - NODE_NAME=Charlie
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - RABBIT_MQ_HOST=rabbit_mq
+      - RABBIT_MQ_PORT=5672
+    ports:
+      - 9003:8081
+    networks:
+      - demokit
+
+networks:
+  demokit:
+    name: demokit
