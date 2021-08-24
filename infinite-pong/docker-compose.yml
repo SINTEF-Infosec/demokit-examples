@@ -14,6 +14,11 @@ services:
       - 9001:8081
     networks:
       - demokit
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
+        tag: "pong-node-1"
 
   pong-node-2:
     container_name: pong_node_2
@@ -29,6 +34,11 @@ services:
       - 9002:8081
     networks:
       - demokit
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
+        tag: "pong-node-2"
 
 networks:
   demokit:

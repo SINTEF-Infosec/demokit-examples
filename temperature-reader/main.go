@@ -1,7 +1,10 @@
 package main
 
 import (
+	"context"
+	"encoding/json"
 	"github.com/SINTEF-Infosec/demokit/core"
+	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"time"
 )
@@ -12,41 +15,74 @@ func main() {
 	node.Start()
 }
 
-type PongNode struct {
+type State struct {
+	IsStarted bool
+}
+
+type TemperatureNode struct {
 	*core.Node
+	State State
 }
 
-func NewPongNode() *PongNode {
+func NewPongNode() *TemperatureNode {
 	logrus.SetLevel(logrus.DebugLevel)
-	return &PongNode{
+	return &TemperatureNode{
 		Node: core.NewDefaultNode(),
+		State: State{
+			IsStarted: false,
+		},
 	}
 }
 
-func (pn *PongNode) Configure() {
-	// Binding actions to events
-	pn.OnEventDo("PING", &core.Action{
-		Name: "SendPong",
-		Do:   pn.SendPong,
+func (pn *TemperatureNode) Configure() {
+	pn.ServeState(pn.State, true)
+
+	temperatureCtx, cancel := context.WithCancel(context.Background())
+	pn.Router.GET("/start", func(ctx *gin.Context) {
+		if !pn.State.IsStarted {
+			pn.Logger.Info("Starting temperature sensor")
+			temperatureCtx, cancel = context.WithCancel(context.Background())
+			go pn.ReadTemperatureAndBroadcast(temperatureCtx)
+		}
 	})
-	sendPingAction := &core.Action{
-		Name: "SendPing",
-		Do:   pn.SendPing,
+	pn.Router.GET("/stop", func(ctx *gin.Context) {
+		if pn.State.IsStarted {
+			pn.Logger.Info("Stopping temperature sensor")
+			cancel()
+		}
+	})
+}
+
+type TemperatureEvent struct {
+	Temperature float64
+	Timestamp   time.Time
+}
+
+func (pn *TemperatureNode) ReadTemperatureAndBroadcast(ctx context.Context) {
+	pn.State.IsStarted = true
+	for {
+		select {
+		case <-ctx.Done():
+			pn.State.IsStarted = false
+			return
+		default:
+			// read temperature
+			temperature, err := pn.Hardware.ReadTemperature()
+			if err != nil {
+				pn.Logger.Errorf("could not read temperature: %v", err)
+				pn.State.IsStarted = false
+				return
+			}
+
+			tempEvent := TemperatureEvent{
+				Temperature: temperature,
+				Timestamp: time.Now(),
+			}
+
+			payload, _ := json.Marshal(tempEvent)
+			pn.Logger.Info("Broadcasting temperature data...")
+			pn.BroadcastEvent("TEMPERATURE_DATA", string(payload))
+			time.Sleep(2 * time.Second)
+		}
 	}
-	pn.OnEventDo("PONG", sendPingAction)
-
-	// Adding an entry point
-	pn.SetEntryPoint(sendPingAction)
-}
-
-func (pn *PongNode) SendPing(_ *core.Event) {
-	time.Sleep(time.Second)
-	pn.Logger.Info("Sending ping...")
-	pn.BroadcastEvent("PING", "")
-}
-
-func (pn *PongNode) SendPong(_ *core.Event) {
-	time.Sleep(time.Second)
-	pn.Logger.Info("Sending pong...")
-	pn.BroadcastEvent("PONG", "")
 }

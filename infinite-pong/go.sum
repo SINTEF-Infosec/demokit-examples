@@ -8,6 +8,10 @@ github.com/SINTEF-Infosec/demokit v0.0.0-20210820074739-0895dbb35f39 h1:nRUuyizK
 github.com/SINTEF-Infosec/demokit v0.0.0-20210820074739-0895dbb35f39/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210820084203-d09c0a7241e8 h1:3LBh0IXcl9VpCIt3NX0DDti/b8Is2S2fdp8ijRF/QHE=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210820084203-d09c0a7241e8/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210820122149-b7f85c1eec20 h1:st8yyktuik4hTf7bpMc4mErFUK23c8AIiBcW5xHeK5E=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210820122149-b7f85c1eec20/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210823150108-89732aef45cb h1:druW/oXzsUV/Ni5Mg7RBYryWYIfiDejMoiiUmqGidGo=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210823150108-89732aef45cb/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
