@@ -25,27 +25,43 @@ func NewVideoNode() *VideoNode {
 func (n *VideoNode) Configure() {
 	n.SetEntryPoint(&core.Action{
 		Name: "LoadVideo",
-		Do: n.LoadVideo,
+		Do:   n.LoadBooVideo,
 	})
 
 	n.OnEventDo("PLAY_VIDEO", &core.Action{
 		Name: "PlayVideo",
-		Do: n.PlayVideo,
+		Do:   n.PlayVideo,
 	})
 
 	n.OnEventDo("PAUSE_VIDEO", &core.Action{
 		Name: "PauseVideo",
-		Do: n.PauseVideo,
+		Do:   n.PauseVideo,
 	})
 
 	n.OnEventDo("STOP_VIDEO", &core.Action{
 		Name: "StopVideo",
-		Do: n.StopVideo,
+		Do:   n.StopVideo,
+	})
+
+	n.OnEventDo("LOAD_PUMPKINS", &core.Action{
+		Name: "LoadPumpkins",
+		Do:   n.LoadPumpkinsVideo,
+	})
+
+	n.OnEventDo("LOAD_BOO", &core.Action{
+		Name: "LoadBoo",
+		Do:   n.LoadBooVideo,
 	})
 }
 
-func (n *VideoNode) LoadVideo(_ *core.Event) {
+func (n *VideoNode) LoadBooVideo(_ *core.Event) {
 	if err := n.MediaController.LoadMediaFromPath("/home/pi/boo_scare_1.mp4"); err != nil {
+		n.Logger.Errorf("could not load video: %v", err)
+	}
+}
+
+func (n *VideoNode) LoadPumpkinsVideo(_ *core.Event) {
+	if err := n.MediaController.LoadMediaFromPath("/home/pi/Pumpkins.VOB"); err != nil {
 		n.Logger.Errorf("could not load video: %v", err)
 	}
 }
