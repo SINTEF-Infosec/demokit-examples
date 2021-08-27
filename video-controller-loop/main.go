@@ -11,21 +11,29 @@ func main() {
 	node.Start()
 }
 
+type State struct {
+	VideoToLoad int
+}
+
 type VideoNode struct {
 	*core.Node
+	State State
 }
 
 func NewVideoNode() *VideoNode {
 	logrus.SetLevel(logrus.DebugLevel)
 	return &VideoNode{
 		Node: core.NewDefaultNodeWithVideo(),
+		State: State{
+			VideoToLoad: 0,
+		},
 	}
 }
 
 func (n *VideoNode) Configure() {
 	n.SetEntryPoint(&core.Action{
 		Name: "LoadVideo",
-		Do:   n.LoadBooVideo,
+		Do:   n.LoadVideo,
 	})
 
 	n.OnEventDo("PLAY_VIDEO", &core.Action{
@@ -43,27 +51,29 @@ func (n *VideoNode) Configure() {
 		Do:   n.StopVideo,
 	})
 
-	n.OnEventDo("LOAD_PUMPKINS", &core.Action{
-		Name: "LoadPumpkins",
-		Do:   n.LoadPumpkinsVideo,
-	})
-
-	n.OnEventDo("LOAD_BOO", &core.Action{
-		Name: "LoadBoo",
-		Do:   n.LoadBooVideo,
+	n.OnEventDo("I_MEDIA_ENDED", &core.Action{
+		Name: "LoadNextVideo",
+		Do:   n.LoadVideo,
+		Then: &core.Action{
+			Name: "AutomaticPlay",
+			Do:   n.PlayVideo,
+		},
 	})
 }
 
-func (n *VideoNode) LoadBooVideo(_ *core.Event) {
-	if err := n.MediaController.LoadMediaFromPath("/home/pi/boo_scare_1.mp4"); err != nil {
-		n.Logger.Errorf("could not load video: %v", err)
+func (n *VideoNode) LoadVideo(_ *core.Event) {
+	videosPaths := []string{
+		"/home/pi/boo_scare_1.mp4",
+		"/home/pi/Pumpkins.VOB",
 	}
-}
 
-func (n *VideoNode) LoadPumpkinsVideo(_ *core.Event) {
-	if err := n.MediaController.LoadMediaFromPath("/home/pi/Pumpkins.VOB"); err != nil {
+	n.Logger.Debugf("Loading video %d, from %s", n.State.VideoToLoad, videosPaths[n.State.VideoToLoad])
+
+	if err := n.MediaController.LoadMediaFromPath(videosPaths[n.State.VideoToLoad]); err != nil {
 		n.Logger.Errorf("could not load video: %v", err)
 	}
+
+	n.State.VideoToLoad = (n.State.VideoToLoad + 1) % 2
 }
 
 func (n *VideoNode) PlayVideo(_ *core.Event) {
