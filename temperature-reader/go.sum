@@ -1,3 +1,5 @@
+github.com/DataDog/go-python3 v0.0.0-20210805105248-03d93fb21b67 h1:zzKCKrn9LBFO2EVefaXQbbugA6yBv+LrllqYDw7dayo=
+github.com/DataDog/go-python3 v0.0.0-20210805105248-03d93fb21b67/go.mod h1:7ctnOCLiUlwKO9GvAjusUF68edSbiHqC18gVPQF0ojA=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210818161026-4dbaa5de43c7 h1:y8CemQUes/kRSTZZUmXGvjlhCf8GOvuBYmQlZxVJPUM=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210818161026-4dbaa5de43c7/go.mod h1:+VtrnBbZFRGVvVOpngK8O1h1J7FeEE3PH8wkvqW2pV4=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210818163019-de31692cfc75 h1:kYSqMA9jmUx9870Jy/oXXKj0lUHGY1rnQtxtoRh4/U0=
@@ -26,6 +28,10 @@ github.com/SINTEF-Infosec/demokit v0.0.0-20210823162943-cadb477ca24d h1:x1ValeX6
 github.com/SINTEF-Infosec/demokit v0.0.0-20210823162943-cadb477ca24d/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210824061814-810d6bee6fa5 h1:cyssaE2NDpO7DRuzTzBMd10OB6mjLudccrfGOh/rYUQ=
 github.com/SINTEF-Infosec/demokit v0.0.0-20210824061814-810d6bee6fa5/go.mod h1:Q+60rKCufIagKFItfYpXlDFeSwfPew2EV8bdCGrrL/I=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210830060905-b0206440365e h1:FLabWURCDagmQ3Ag3y+96oush/45NrZr2VgO0T1qW7o=
+github.com/SINTEF-Infosec/demokit v0.0.0-20210830060905-b0206440365e/go.mod h1:OuuOQSt8iM/ZLFU2CCRWgJcNYPPP/XQiTuwqKlD+lk0=
+github.com/adrg/libvlc-go/v3 v3.1.4 h1:zWBln9eEuMzZbOFtgmvHpufYejAuelfmGpiWG9f0n24=
+github.com/adrg/libvlc-go/v3 v3.1.4/go.mod h1:xJK0YD8cyMDejnrTFQinStE6RYCV1nlfS8KmqTpszSc=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
