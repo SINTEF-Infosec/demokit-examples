@@ -24,7 +24,7 @@ func NewVideoNode() *VideoNode {
 
 func (n *VideoNode) Configure() {
 	n.SetEntryPoint(&core.Action{
-		Name: "LoadVideo",
+		Name: "LoadBooVideo",
 		Do:   n.LoadBooVideo,
 	})
 
