@@ -32,8 +32,8 @@ func NewVideoNode() *VideoNode {
 
 func (n *VideoNode) Configure() {
 	n.SetEntryPoint(&core.Action{
-		Name: "LoadVideo",
-		Do:   n.LoadVideo,
+		Name: "LoadVideoAndEmitLightSignal",
+		Do:   n.LoadVideoAndEmitLightSignal,
 	})
 
 	n.OnEventDo("PLAY_VIDEO", &core.Action{
@@ -53,7 +53,7 @@ func (n *VideoNode) Configure() {
 
 	n.OnEventDo("I_MEDIA_ENDED", &core.Action{
 		Name: "LoadNextVideo",
-		Do:   n.LoadVideo,
+		Do:   n.LoadVideoAndEmitLightSignal,
 		Then: &core.Action{
 			Name: "AutomaticPlay",
 			Do:   n.PlayVideo,
@@ -61,7 +61,7 @@ func (n *VideoNode) Configure() {
 	})
 }
 
-func (n *VideoNode) LoadVideo(_ *core.Event) {
+func (n *VideoNode) LoadVideoAndEmitLightSignal(_ *core.Event) {
 	videosPaths := []string{
 		"/home/pi/boo_scare_1.mp4",
 		"/home/pi/Pumpkins.VOB",
@@ -71,6 +71,13 @@ func (n *VideoNode) LoadVideo(_ *core.Event) {
 
 	if err := n.MediaController.LoadMediaFromPath(videosPaths[n.State.VideoToLoad]); err != nil {
 		n.Logger.Errorf("could not load video: %v", err)
+	}
+
+	// We turn the light on or on
+	if n.State.VideoToLoad == 0 {
+		n.BroadcastEvent("LIGHT_ON", "")
+	} else {
+		n.BroadcastEvent("LIGHT_OFF", "")
 	}
 
 	n.State.VideoToLoad = (n.State.VideoToLoad + 1) % 2
