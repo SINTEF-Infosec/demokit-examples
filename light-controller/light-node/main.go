@@ -18,7 +18,7 @@ type LightNode struct {
 func NewLightNode() *LightNode {
 	logrus.SetLevel(logrus.DebugLevel)
 	return &LightNode{
-		Node: core.NewDefaultNode(),
+		Node: core.NewDefaultRaspberryPiNode(),
 	}
 }
 
