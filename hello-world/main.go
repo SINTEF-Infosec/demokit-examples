@@ -27,6 +27,7 @@ func (n *HelloNode) Configure() {
 	n.SetEntryPoint(&core.Action{
 		Name: "HelloWorld",
 		Do: n.HelloWorld,
+
 	})
 }
 
