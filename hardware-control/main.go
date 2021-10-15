@@ -24,7 +24,11 @@ type ControllerNode struct {
 func NewControllerNode() *ControllerNode {
 	logrus.SetLevel(logrus.DebugLevel)
 	return &ControllerNode{
+<<<<<<< HEAD
 		Node: core.NewDefaultRaspberryPiNode(),
+=======
+		Node: core.NewDefaultRaspberryPiNode(true),
+>>>>>>> 46d8092 (Add hardware control example.)
 		State: State{
 			LatestCommands: make([]string, 8),
 		},
@@ -55,7 +59,11 @@ func (pn *ControllerNode) BroadcastInputEvent(event *core.Event) {
 }
 
 func (pn *ControllerNode) AddCommand(command string) {
+<<<<<<< HEAD
 	// Shift previous command
+=======
+	// Shift previous commands
+>>>>>>> 46d8092 (Add hardware control example.)
 	for k := 7; k > 0; k-- {
 		pn.State.LatestCommands[k] = pn.State.LatestCommands[k-1]
 	}
