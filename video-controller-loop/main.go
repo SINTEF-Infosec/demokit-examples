@@ -37,7 +37,7 @@ func (n *VideoNode) Configure() {
 	})
 
 	n.OnEventDo("PLAY_VIDEO", &core.Action{
-		Name: "PlayVideo",
+		Name: "PlayPumpkins",
 		Do:   n.PlayVideo,
 	})
 
